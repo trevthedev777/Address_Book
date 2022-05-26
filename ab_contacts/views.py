@@ -2,23 +2,24 @@
 
 """This module provides views to manage the contacts table."""
 
-from PyQt.QtWidgets import (
-    QHBoxlayout,
+from PyQt5.QtWidgets import (
+    QHBoxLayout,
     QMainWindow,
     QWidget,
 )
 
 
+# Generate the APPs Main Window
 class Window(QMainWindow):
 
     """Main Window."""
 
     def __init__(self, parent=None):
         """Initializer"""
-        super().init(parent)
-        self.setWindowTitle("RP Contacts")
+        super().__init__(parent)
+        self.setWindowTitle("book")
         self.resize(550, 250)
         self.centralWidget = QWidget()
         self.setCentralWidget(self.centralWidget)
         self.layout = QHBoxLayout()
-        self.centralWidget.setlayout(self.layout)
+        self.centralWidget.setLayout(self.layout)
