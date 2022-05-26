@@ -6,5 +6,7 @@
 
 from ab_contacts.main import main
 
+
+# Run this script
 if __name__ == "__main__":
     main()
