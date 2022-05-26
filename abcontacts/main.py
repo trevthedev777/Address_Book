@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Address_book/main.py
 
-"""This module provides RP Contacts application."""
+"""This module provides AB Contacts application."""
 
 import sys
 
@@ -13,13 +13,17 @@ from .views import Window
 
 def main():
     """RP Contacts main function."""
-    # Create The Application
+
+    # Create the application
     app = QApplication(sys.argv)
-    # Connect tio the database before creating any window
+
+    # Connect to the database before creating any window
     if not createConnection("contacts.sqlite"):
         sys.exit(1)
-    # Create The Main Window if the connection succeeds
+
+    # Create the main window if the connection succeeded
     win = Window()
     win.show()
-    #  Run The Event Loop
-    sys.exit(app.exec())
+
+    # Run the event loop
+    sys.exit(app.exec_())

@@ -4,7 +4,7 @@
 
 """This module provides ab_contacts entry point script."""
 
-from ab_contacts.main import main
+from abcontacts.main import main
 
 
 # Run this script
