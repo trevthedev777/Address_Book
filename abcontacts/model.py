@@ -13,18 +13,19 @@ class ContactsModel:
     def __init__(self):
         self.model = self._createModel()
 
-        @staticmethod
         # Create the layout and functionality
-        def _createModel():
-            """Create and set up the model."""
-            tableModel = QSqlTableModel()
-            tableModel.setTable("contacts")
-            # With this, you ensure that the changes on the model get saved into the database immediately
-            tableModel.setEditStrategy(QSqlTableModel.OnFieldChange)
-            tableModel.select()
-            # headers
-            headers = ("ID", "Name", "Job", "Email", "Contact No.", "Address")
 
-            for columnIndex, header in enumerate(headers):
-                tableModel.setHeaderData(columnIndex, Qt.Horizontal, header)
-            return tableModel
+    @staticmethod
+    def _createModel():
+        """Create and set up the model."""
+        tableModel = QSqlTableModel()
+        tableModel.setTable("contacts")
+        # With this, you ensure that the changeson the model get saved into the databaseimmediately
+        tableModel.setEditStrategy(QSqlTableModel.OnFieldChange)
+        tableModel.select()
+        # headers
+        headers = ("ID", "Name", "Job", "Email", "Contact No.", "Address")
+
+        for columnIndex, header in enumerate(headers):
+            tableModel.setHeaderData(columnIndex, Qt.Horizontal, header)
+        return tableModel
