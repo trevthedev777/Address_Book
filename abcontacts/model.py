@@ -13,7 +13,7 @@ class ContactsModel:
     def __init__(self):
         self.model = self._createModel()
 
-        # Create the layout and functionality
+    # Create the layout and functionality
 
     @staticmethod
     def _createModel():
