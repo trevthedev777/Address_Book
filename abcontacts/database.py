@@ -34,6 +34,7 @@ def createConnection(databaseName):
     connection.setDatabaseName(databaseName)
 
     if not connection.open():
+
         # If connection is unsuccessful
         QMessageBox.warning(
             None,
@@ -44,5 +45,6 @@ def createConnection(databaseName):
 
     #  This ensures that the application creates the contacts table before doing any operations on the database
     _createContactsTable()
+
     # If connection is successful
     return True
