@@ -52,3 +52,12 @@ class ContactsModel:
         self.model.removeRow(row)
         self.model.submitAll()
         self.model.select()
+
+    # Clear All Contacts
+    def clearContacts(self):
+        """Remove all contacts in the database"""
+        self.model.setEditStrategy(QSqlTableModel.OnManualSubmit)
+        self.model.removeRows(0, self.model.rowCount())
+        self.model.submitAll()
+        self.model.setEditStrategy(QSqlTableModel.OnFieldChange)
+        self.model.select()
