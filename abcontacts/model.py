@@ -29,3 +29,19 @@ class ContactsModel:
         for columnIndex, header in enumerate(headers):
             tableModel.setHeaderData(columnIndex, Qt.Horizontal, header)
         return tableModel
+
+    def addContact(self, data):
+        """Add a Contact to the database"""
+        # gets the current number of rows in the data model.
+        rows = self.model.rowCount()
+        # inserts a new row at the end of the data model
+        self.model.insertRows(rows, 1)
+
+        #  inserts every item in data into the corresponding cell in the data model
+        for column_index, field in enumerate(data):
+            self.model.setData(self.model.index(rows, column_index, 1), field)
+
+        # submits the changes to the database by calling .submitAll() on the model
+        self.model.submitAll()
+        # reloads the data from the database into the model
+        self.model.select()
