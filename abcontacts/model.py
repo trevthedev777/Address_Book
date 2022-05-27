@@ -45,3 +45,10 @@ class ContactsModel:
         self.model.submitAll()
         # reloads the data from the database into the model
         self.model.select()
+
+    # Delete Contact
+    def deleteContact(self, row):
+        """Removes a contact from the database"""
+        self.model.removeRow(row)
+        self.model.submitAll()
+        self.model.select()

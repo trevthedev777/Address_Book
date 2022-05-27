@@ -50,6 +50,7 @@ class Window(QMainWindow):
         self.addButton = QPushButton("Add...")
         self.addButton.clicked.connect(self.openAddDialog)
         self.deleteButton = QPushButton("Delete")
+        self.deleteButton.clicked.connect(self.deleteContact)
         self.clearAllButton = QPushButton("Clear All")
         # Lay out the GUI
         layout = QVBoxLayout()
@@ -66,6 +67,23 @@ class Window(QMainWindow):
         if dialog.exec() == QDialog.Accepted:
             self.contactsModel.addContact(dialog.data)
             self.table.resizeColumnsToContents()
+
+    def deleteContact(self):
+        """Delete the selected contact from the database"""
+        row = self.table.currentIndex().row()
+        if row < 0:
+            return
+
+        # Message Box Warning
+        messageBox = QMessageBox.warning(
+            self,
+            "Warning!",
+            "Do you want to remove the seletced contact?",
+            QMessageBox.Ok | QMessageBox.Cancel,
+        )
+
+        if messageBox == QMessageBox.Ok:
+            self.contactsModel.deleteContact(row)
 
 
 class AddDialog(QDialog):
@@ -90,8 +108,8 @@ class AddDialog(QDialog):
         self.jobField.setObjectName("Job")
         self.emailField = QLineEdit()
         self.emailField.setObjectName("Email")
-        self.numberField = QLineEdit()
-        self.numberField.setObjectName("Contact No.:")
+        # self.numberField = QLineEdit()
+        # self.numberField.setObjectName("Contact No.:")
         self.addressField = QLineEdit()
         self.addressField.setObjectName("Address")
         # Lay out the data fields
@@ -99,7 +117,7 @@ class AddDialog(QDialog):
         layout.addRow("Name:", self.nameField)
         layout.addRow("Job:", self.jobField)
         layout.addRow("Email:", self.emailField)
-        layout.addRow("Contact No.:", self.numberField)
+        # layout.addRow("Contact No.:", self.numberField)
         layout.addRow("Address:", self.addressField)
         self.layout.addLayout(layout)
         # Add standard buttons to the dialog and connect them
@@ -115,7 +133,7 @@ class AddDialog(QDialog):
     def accept(self):
         """Accept the data provided through the dialog."""
         self.data = []
-        for field in (self.nameField, self.jobField, self.emailField, self.numberField, self.addressField):
+        for field in (self.nameField, self.jobField, self.emailField, self.addressField):  # self.numberField,
             if not field.text():
                 QMessageBox.critical(
                     self,
