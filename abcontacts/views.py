@@ -13,6 +13,9 @@ from PyQt5.QtWidgets import (
     QWidget,
 )
 
+# Import the model
+from .model import ContactsModel
+
 
 # Generate the APPs Main Window
 class Window(QMainWindow):
@@ -29,6 +32,7 @@ class Window(QMainWindow):
         self.setCentralWidget(self.centralWidget)
         self.layout = QHBoxLayout()
         self.centralWidget.setLayout(self.layout)
+        self.contactsModel = ContactsModel()
 
         self.setupUI()
 
@@ -37,6 +41,7 @@ class Window(QMainWindow):
 
         # Create the table view widget
         self.table = QTableView()
+        self.table.setModel(self.contactsModel.model)
 
         # Allows that the whole row is selected
         self.table.setSelectionBehavior(QAbstractItemView.SelectRows)

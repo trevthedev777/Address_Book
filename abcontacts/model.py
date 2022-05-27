@@ -9,7 +9,7 @@ from PyQt5.QtSql import QSqlTableModel
 # Create the Contact Model
 
 
-class ContactModel:
+class ContactsModel:
     def __init__(self):
         self.model = self._createModel()
 
