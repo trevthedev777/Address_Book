@@ -81,7 +81,7 @@ class Window(QMainWindow):
         messageBox = QMessageBox.warning(
             self,
             "Warning!",
-            "Do you want to remove the seletced contact?",
+            "Do you want to remove the selected contact?",
             QMessageBox.Ok | QMessageBox.Cancel,
         )
 
@@ -124,8 +124,8 @@ class AddDialog(QDialog):
         self.jobField.setObjectName("Job")
         self.emailField = QLineEdit()
         self.emailField.setObjectName("Email")
-        # self.numberField = QLineEdit()
-        # self.numberField.setObjectName("Contact No.:")
+        self.numberField = QLineEdit()
+        self.numberField.setObjectName("Contact No.:")
         self.addressField = QLineEdit()
         self.addressField.setObjectName("Address")
         # Lay out the data fields
@@ -133,7 +133,7 @@ class AddDialog(QDialog):
         layout.addRow("Name:", self.nameField)
         layout.addRow("Job:", self.jobField)
         layout.addRow("Email:", self.emailField)
-        # layout.addRow("Contact No.:", self.numberField)
+        layout.addRow("Contact No.:", self.numberField)
         layout.addRow("Address:", self.addressField)
         self.layout.addLayout(layout)
         # Add standard buttons to the dialog and connect them
@@ -149,7 +149,7 @@ class AddDialog(QDialog):
     def accept(self):
         """Accept the data provided through the dialog."""
         self.data = []
-        for field in (self.nameField, self.jobField, self.emailField, self.addressField):  # self.numberField,
+        for field in (self.nameField, self.jobField, self.emailField, self.numberField, self.addressField):
             if not field.text():
                 QMessageBox.critical(
                     self,

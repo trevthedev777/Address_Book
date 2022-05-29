@@ -39,7 +39,7 @@ class ContactsModel:
 
         #  inserts every item in data into the corresponding cell in the data model
         for column_index, field in enumerate(data):
-            self.model.setData(self.model.index(rows, column_index, 1), field)
+            self.model.setData(self.model.index(rows, column_index + 1), field)
 
         # submits the changes to the database by calling .submitAll() on the model
         self.model.submitAll()
@@ -61,3 +61,8 @@ class ContactsModel:
         self.model.submitAll()
         self.model.setEditStrategy(QSqlTableModel.OnFieldChange)
         self.model.select()
+
+
+# Learning Object 6
+# learning object 9.1
+# Can not pyhsically deploy my app to a cloud based solution
